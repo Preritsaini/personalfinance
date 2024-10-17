@@ -29,16 +29,19 @@ public class ExpensesPanel extends JPanel {
         gbc.gridx = 0; gbc.gridy = 2; gbc.gridwidth = 2; add(addButton, gbc);
 
         // Add button action listener
+        // Add button action listener
         addButton.addActionListener(e -> {
             try {
                 double expense = Double.parseDouble(expenseField.getText());
                 String reason = reasonField.getText();
                 financialData.addExpense(expense, reason); // Update financial data
                 JOptionPane.showMessageDialog(this, "Expense added successfully!");
+                manager.getReportsPanel().updateReport(); // Update report panel
                 manager.switchPanel("Dashboard"); // Switch back to dashboard
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Please enter a valid number for expense.");
             }
         });
+
     }
 }

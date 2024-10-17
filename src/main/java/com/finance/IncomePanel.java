@@ -25,15 +25,18 @@ public class IncomePanel extends JPanel {
         gbc.gridx = 0; gbc.gridy = 1; gbc.gridwidth = 2; add(addButton, gbc);
 
         // Add button action listener
+        // Add button action listener
         addButton.addActionListener(e -> {
             try {
                 double income = Double.parseDouble(incomeField.getText());
                 financialData.addIncome(income); // Update financial data
                 JOptionPane.showMessageDialog(this, "Income added successfully!");
+                manager.getReportsPanel().updateReport(); // Update report panel
                 manager.switchPanel("Dashboard"); // Switch back to dashboard
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Please enter a valid number for income.");
             }
         });
+
     }
 }
